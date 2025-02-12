@@ -11,7 +11,7 @@ jobs:
         image: postgres:13
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: felipe123
+          POSTGRES_PASSWORD: felipe
           POSTGRES_DB: pdsi2_database
         ports:
           - 5432:5432
