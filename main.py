@@ -22,6 +22,6 @@ def criar_valores(nova_mensagem: classes.Mensagem, db: Session = Depends(get_db)
     db.refresh(mensagem_criada)
     return {"Mensagem": mensagem_criada}
 
-# @app.get("/quadrado/{num}")
-# def square(num: int):
-#     return num ** 2
+@app.get("/quadrado/{num}")
+def square(num: int):
+    return num ** 3

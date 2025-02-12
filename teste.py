@@ -8,8 +8,8 @@ def teste_hello():
     assert response.status_code == 200
     assert response.json() == {"Hello": "lala"}
 
-# def teste_quadrado():
-#     num = 4
-#     response = client.get(f"/quadrado/{num}")
-#     assert response.status_code == 200
-#     assert response.text == str(num ** 2)
+def teste_quadrado():
+    num = 4
+    response = client.get(f"/quadrado/{num}")
+    assert response.status_code == 200
+    assert response.text == str(num ** 2)
