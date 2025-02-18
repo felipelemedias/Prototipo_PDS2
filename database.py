@@ -1,10 +1,15 @@
+import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-user = "postgres"
-password = "felipe"
-database = "pdsi2_database"
-host = "localhost"
+if os.getenv("GITHUB_ACTIONS") is None:
+    load_dotenv(".env.local")
+
+user = os.getenv("POSTGRES_USER")
+password = os.getenv("POSTGRES_PASSWORD")
+database = os.getenv("POSTGRES_DB")
+host = os.getenv("POSTGRES_HOST") 
 
 SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{host}/{database}"
 
