@@ -9,7 +9,7 @@ if os.getenv("GITHUB_ACTIONS") is None:
 user = os.getenv("POSTGRES_USER")
 password = os.getenv("POSTGRES_PASSWORD")
 database = os.getenv("POSTGRES_DB") 
-host = os.getenv("POSTGRES_HOST") 
+host = os.getenv("POSTGRES_HOST", "postgres") 
 
 SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{host}/{database}"
 
