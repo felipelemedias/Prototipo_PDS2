@@ -17,6 +17,12 @@ jobs:
         ports:
           - 5432:5432
     steps:
+      - name: Criar arquivo .env
+        run: |
+          echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> .env
+          echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
+          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
+          echo "POSTGRES_HOST=localhost" >> .env
       - name: pulling git repo
         uses: actions/checkout@v2
       - name: instalando o python
