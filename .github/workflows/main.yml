@@ -32,10 +32,10 @@ jobs:
         run: sleep 15
       - name: Create .env file in Backend
         run: |
-          echo "DATABASE_USER=${{ secrets.POSTGRES_USER }}" >> Backend/.env
-          echo "DATABASE_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> Backend/.env
-          echo "DATABASE_NAME=${{ secrets.POSTGRES_DB }}" >> Backend/.env
-          echo "DATABASE_HOST=localhost" >> Backend/.env
+          echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> Backend/.env
+          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> Backend/.env
+          echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> Backend/.env
+          echo "POSTGRES_HOST=localhost" >> Backend/.env
       - name: Executar pytest
         env:
           DATABASE_URL: postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@${{ secrets.POSTGRES_HOST }}:5432/${{ secrets.POSTGRES_DB }}
