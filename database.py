@@ -3,15 +3,16 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-if os.getenv("GITHUB_ACTIONS") is None:
-    load_dotenv(".env.local")
+load_dotenv()
 
-user = os.getenv("POSTGRES_USER")
-password = os.getenv("POSTGRES_PASSWORD")
-database = os.getenv("POSTGRES_DB") 
-host = os.getenv("POSTGRES_HOST") 
+database_user = os.getenv("DATABASE_USER")
+database_name = os.getenv("DATABASE_NAME")
+database_password = os.getenv("DATABASE_PASSWORD")
+database_host = os.getenv("DATABASE_HOST")
 
-SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{host}/{database}"
+print(f"postgresql://{database_user}:{database_password}@{database_host}/{database_name}")
+
+SQLALCHEMY_DATABASE_URL = f"postgresql://{database_user}:{database_password}@{database_host}/{database_name}"
 
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
