@@ -14,6 +14,7 @@ jobs:
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
         ports:
           - 5432:5432
     steps:
@@ -27,17 +28,9 @@ jobs:
         run: python -m pip install --upgrade pip
       - name: instalar dependencias
         run: pip install -r requirements.txt
-      - name: Debug Environment Variables
-        run: env
-      - name: Criar arquivo .env
-        run: |
-          echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> .env
-          echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
-          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
-          echo "POSTGRES_HOST=postgres" >> .env
       - name: Esperando o PostgreSQL ficar pronto
         run: sleep 15
       - name: Executar pytest
         env:
-          DATABASE_URL: postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@postgres:5432/${{ secrets.POSTGRES_DB }}
+          DATABASE_URL: postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@${{ secrets.POSTGRES_HOST }}:5432/${{ secrets.POSTGRES_DB }}
         run: pytest teste.py

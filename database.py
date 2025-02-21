@@ -6,11 +6,18 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 if os.getenv("GITHUB_ACTIONS") is None:
     load_dotenv(".env.local")
 
-DATABASE_URL = os.getenv("DATABASE_URL")  # Carregar a URL do banco de dados
+user = os.getenv("POSTGRES_USER")
+password = os.getenv("POSTGRES_PASSWORD")
+database = os.getenv("POSTGRES_DB") 
+host = os.getenv("POSTGRES_HOST") 
 
-engine = create_engine(DATABASE_URL)
+SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{host}/{database}"
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+
+
+SessionLocal = sessionmaker( autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 def get_db():
