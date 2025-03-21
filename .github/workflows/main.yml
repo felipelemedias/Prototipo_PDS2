@@ -14,7 +14,6 @@ jobs:
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
         ports:
           - 5432:5432
     steps:
@@ -38,5 +37,5 @@ jobs:
           echo "POSTGRES_HOST=postgres" >> .env.local
       - name: Executar pytest
         env:
-          DATABASE_URL: postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@${{ secrets.POSTGRES_HOST }}:5432/${{ secrets.POSTGRES_DB }}
+          DATABASE_URL: postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@postgres:5432/${{ secrets.POSTGRES_DB }}
         run: pytest teste.py
