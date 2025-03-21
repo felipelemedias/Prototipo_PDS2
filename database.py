@@ -5,6 +5,11 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 
 load_dotenv()
 
+POSTGRES_USER= 'postgres'
+POSTGRES_PASSWORD='felipe'
+POSTGRES_DB='pdsi2_database'
+POSTGRES_HOST='postgres'
+
 database_user = os.getenv("POSTGRES_USER")
 database_name = os.getenv("POSTGRES_DB")
 database_password = os.getenv("POSTGRES_PASSWORD")
