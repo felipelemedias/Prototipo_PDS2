@@ -7,10 +7,10 @@ if os.getenv("GITHUB_ACTIONS") is None:
     load_dotenv(".env.local")
     
 # Ler variáveis de ambiente com fallback
-user = "postgres"
-password = "tiagoreis123"
-database = "database_tigas"
-host = "localhost"
+POSTGRES_USER= 'postgres'
+POSTGRES_PASSWORD='felipe'
+POSTGRES_DB='pdsi2_database'
+POSTGRES_HOST='postgres'
 
 # Debug: Verificar variáveis carregadas
 print(f"DB_USER={user}")
