@@ -13,10 +13,10 @@ POSTGRES_DB='pdsi2_database'
 POSTGRES_HOST='postgres'
 
 # Debug: Verificar variáveis carregadas
-print(f"DB_USER={user}")
-print(f"DB_PASSWORD={'*' * len(password) if password else None}")
-print(f"DB_NAME={database}")
-print(f"DB_HOST={host}")
+print(f"POSTGRES_USER={user}")
+print(f"POSTGRES_PASSWORD={'*' * len(password) if password else None}")
+print(f"POSTGRES_DB={database}")
+print(f"POSTGRES_HOST={host}")
 
 SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{host}/{database}"
 
